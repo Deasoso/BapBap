@@ -7,26 +7,26 @@
 </template>
 
 <script>
-// import * as web3 from '@/contract/web3.js'
+import * as web3 from '@/contract/web3.js'
 
 export default {
   name: 'App',
   data: function () {
     return {
-      price: 0,
+      price: 0
     }
   },
   methods: {
-    buy: function (amount) {
-      // web3.buy(amount);
+    buy: function () {
+      web3.buy(10)
     },
-    sell: function (amount) {
-      // web3.sell(amount);
+    sell: function () {
+      web3.sell(10)
     }
   },
   created: async function () {
-    // this.price = await web3.getprice();
-  },
+    this.price = await web3.getprice()
+  }
 }
 </script>
 

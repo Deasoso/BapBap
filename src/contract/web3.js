@@ -8,26 +8,24 @@ const web3 = web3Provider
   : new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/DQtbJQhdBnp43bneIiqp"));//config.defaultNetwork.rpc));
 
 web3.eth.defaultAccount = web3.eth.accounts[0];
-var contractat = '0xbd9790653ebf33d307c04d640777e85781b8b290';
+var contractat = '0x7e1bb814755e5e793ae40eb27473ef04f003c2e7';
 var contract = web3.eth.contract(ABI).at(contractat);
-///////bancor///////
+
 export const buy = (amount) => new Promise((resolve, reject) => {
-    DDZ_DEBUG && console.log("joining game");
-    contract.join({
+    contract.buy(amount,{
         value: 0,
         gasPrice: 1000000000 * 5
     },
     (err, result) => (err ? reject(err) : resolve(result)));
 });
 export const sell = (amount) => new Promise((resolve, reject) => {
-    DDZ_DEBUG && console.log("joining game");
-    contract.join({
+    contract.sell(amount,{
         value: 0,
         gasPrice: 1000000000 * 5
     },
     (err, result) => (err ? reject(err) : resolve(result)));
 });
-//=====================================
+
 export const getprice = async () => {
-    return await Promise.promisify(ddzcontract.getrate)();
+    return await Promise.promisify(contract.price)();
 }
