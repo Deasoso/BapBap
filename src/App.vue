@@ -3,6 +3,7 @@
     <div>当前价格：{{price}}</div>
     <button class="button" @click="buy">买入</button>
     <button class="button" @click="sell">卖出</button>
+    <button class="button" @click="draw">抽卡</button>
   </div>
 </template>
 
@@ -22,6 +23,9 @@ export default {
     },
     sell: function () {
       web3.sell(10)
+    },
+    draw: function () {
+      web3.draw();
     }
   },
   created: async function () {
